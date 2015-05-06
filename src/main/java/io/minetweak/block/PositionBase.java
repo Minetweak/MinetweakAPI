@@ -4,6 +4,7 @@ import io.minetweak.world.IChunk;
 
 /**
  * Represents the position of a block in the world.
+ * @author Logan Gorence
  */
 public abstract class PositionBase {
 
@@ -11,12 +12,23 @@ public abstract class PositionBase {
     private int y;
     private int z;
 
+    /**
+     * Constructor for separate coordinate values.
+     *
+     * @param x X-coordinate
+     * @param y Y-coordinate
+     * @param z Z-coordinate
+     */
     public PositionBase(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
+    /**
+     * Constructor for a block that contains coordinates.
+     * @param block Block object
+     */
     public PositionBase(IBlock block) {
         this.x = block.getX();
         this.y = block.getY();
@@ -29,6 +41,10 @@ public abstract class PositionBase {
      two positions
      */
 
+    /**
+     * Get the chunk of the block.
+     * @return Block's chunk
+     */
     public abstract IChunk getChunk();
 
     /**
