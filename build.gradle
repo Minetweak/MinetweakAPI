@@ -1,0 +1,62 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'io.minetweak'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            configuration = configurations.archives
+
+            repository(url: 'http://nexus.directcode.org/nexus/content/repositories/snapshots/') {
+                authentication(userName: project.property('dcUsername'), password: project.property('dcPassword'))
+            }
+
+            pom {
+                project {
+                    url 'http://minetweak.io/'
+
+                    scm {
+                        url 'https://github.com/Minetweak/MinetweakAPI/'
+                        connection 'scm:git:git://github.com/Minetweak/MinetweakAPI.git'
+                        developerConnection 'scm:git:git@github.com:Minetweak/MinetweakAPI.git'
+                    }
+
+                    issueManagement {
+                        system 'github'
+                        url 'https://github.com/Minetweak/MinetweakAPI/issues'
+                    }
+
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'http://opensource.org/licenses/MIT'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'logangorence'
+                            name 'Logan Gorence'
+                            roles {
+                                role 'developer'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
