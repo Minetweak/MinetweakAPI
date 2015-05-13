@@ -24,6 +24,6 @@ public interface IItemStack {
      *
      * @return Amount of items in stack
      */
-    int getStackCount();
+    int getStackSize();
 
 }
